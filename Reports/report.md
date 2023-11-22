@@ -55,7 +55,7 @@ End product is information excel sheet of airline-assigned flight details for re
 (though still deciding if details are assigned or already chosen by passengers.)
 
 Implementation Testing
-[We're proud to state that our second plane successfully didn't crash.]
+[We're proud to state that our second plane successfully didn't crash.] i.e. insert whatever info falls into "implementation testing"
 
 Conclusion
 [Have mercy on our performance, we did our best.]
