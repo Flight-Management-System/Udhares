@@ -2,18 +2,22 @@
 
 Report
 [So, yeah, our product does stuff with things.] An overview of a semi-automated seaplane airline client and customer reimbursement system. 
+
 Heading
 [We did this.]
 It lowers waiting times due to inefficient scheduling by informing passengers of their schedules and the overall schedules. Male' people are high priority. Flight may not be consistent so passengers would fly, land on a spot, and fly from there. The dashboard contains….. Passengers have access to a user interface. Passengers drag and drop themselves to their seat in their flight from the interface.
+
 Heading 2
 [We did this too.]
 Heading 2+
 [And we did this too.]
+
 Aims and Objectives
 [Things we want to happen.]
 To make a functioning airline system where passengers won't have long waiting durations from being informed of their schedules days ahead.
+
 Literature Review
-[Two wise bicycle repairmen once said.....]
+[Two wise bicycle repairmen once said.....] i.e. Wright Brother's joke, also insert literature review here for...whatever we'd need it.
 
 Project Planning and Team Roles
 [We do stuff.]
@@ -49,7 +53,9 @@ User gives TMA list of passengers.
 Two functions included: list sorting and flight tracking.
 End product is information excel sheet of airline-assigned flight details for resorts. Yep, you can't even choose your seats.
 (though still deciding if details are assigned or already chosen by passengers.)
+
 Implementation Testing
 [We're proud to state that our second plane successfully didn't crash.]
+
 Conclusion
 [Have mercy on our performance, we did our best.]
