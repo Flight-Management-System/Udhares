@@ -68,7 +68,10 @@ export default {
 }
 
 .v-card {
-  flex-grow: 1;
+  flex-grow: 0;  /* Prevents the card from growing */
+  width: 100%;  /* Specify a fixed width */
+  height: 100%;  /* Specify a fixed height */
+  overflow: hidden;  /* Hide overflow */
 }
 
 .v-tab-item, .v-window-item {
