@@ -5,6 +5,7 @@
     </router-link>
 
     <ul class="nav-list">
+      <li><router-link to="/client" class="nav-item">Client Dashboard</router-link></li>
       <li><router-link to="/scheduler" class="nav-item">Scheduler Dashboard</router-link></li>
       <li><router-link to="/admin" class="nav-item">Admin Dashboard</router-link></li>
       <li><router-link to="/contact-us" class="nav-item">Contact Us</router-link></li>
