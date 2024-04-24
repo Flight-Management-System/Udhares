@@ -58,7 +58,7 @@
                   <v-text-field v-model.number="editedItem.ktas" label="KTAS" required></v-text-field>
                   <v-text-field v-model.number="editedItem.fuel_capacity" label="Fuel Capacity" required></v-text-field>
                   <v-text-field v-model.number="editedItem.cg_index" label="CG Index" required></v-text-field>
-                  <v-switch v-model="editedItem.is_active" :color="editedItem.is_active ? 'red' : 'green'" label="Active"></v-switch>
+                  <v-switch v-model="editedItem.is_active" :color="editedItem.is_active ? 'green' : 'red'" label="Active"></v-switch>
                 </v-col>
               </v-row>
             </v-container>
@@ -107,6 +107,7 @@
           fuel_capacity: 0,
           cg_index: 0,
           is_active: false,
+          current_location: 1 ,
         },
         headers: [
           { title: 'ID', value: 'id' },
