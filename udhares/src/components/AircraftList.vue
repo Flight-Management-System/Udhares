@@ -107,6 +107,7 @@
           fuel_capacity: 0,
           cg_index: 0,
           is_active: false,
+          current_location: 1 ,
         },
         headers: [
           { title: 'ID', value: 'id' },
