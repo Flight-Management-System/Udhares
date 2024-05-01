@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import LocationsList from '@/components/LocationsList.vue';
+import LocationsList from 'src/components/LocationsList.vue';
 import AircraftList from '@/components/AircraftList.vue';
 
 export default {
