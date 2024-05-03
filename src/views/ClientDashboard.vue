@@ -17,13 +17,13 @@
             </v-icon>
             Add Booking
           </v-tab>
-          <v-tab value="passenger-list">
+          <v-tab value="passenger-wait-list">
             <v-icon start>
               mdi-account-clock
             </v-icon>
-            Passenger List
+            Wait List
           </v-tab>
-          <v-tab value="booked-passengers">
+          <v-tab value="passenger-booked-list">
             <v-icon start>
               mdi-account-check
             </v-icon>
@@ -34,11 +34,11 @@
           <v-window-item value="add-booking">
             <AddBooking />
           </v-window-item>
-          <v-window-item value="passenger-list">
-            <PassengerList />
+          <v-window-item value="passenger-wait-list">
+            <PassengerWaitList />
           </v-window-item>
-          <v-window-item value="booked-passengers">
-            <BookedPassengers />
+          <v-window-item value="passenger-booked-list">
+            <PassengerBookedList />
           </v-window-item>
         </v-window>
       </div>
@@ -48,18 +48,19 @@
 
 <script>
 import AddBooking from '@/components/AddBooking.vue';
-import PassengerList from '@/components/PassengerList.vue';
-import BookedPassengers from '@/components/BookedPassengers.vue';
+import PassengerWaitList from '@/components/PassengerWaitList.vue';
+import PassengerBookedList from '@/components/PassengerBookedList.vue';
 
 export default {
   name: 'ClientDashboard',
   components: {
     AddBooking,
-    PassengerList,
-    BookedPassengers,
+    PassengerWaitList,
+    PassengerBookedList,
   },
   data() {
     return {
+      tab: 'add-booking', // default tab
     };
   },
 }
