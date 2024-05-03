@@ -24,12 +24,89 @@
           <v-icon>mdi-chevron-right</v-icon>
         </v-btn>
       </v-col>
-
+      
       <!-- Additional Spacer for balancing -->
       <v-spacer></v-spacer>
-      <v-spacer></v-spacer>
+      <v-btn @click="openDialog">Add Flight</v-btn>
+      <v-btn >Remove Flight</v-btn>
     </v-row>
+    <v-dialog v-model="dialogVisible" max-width="500px">
+    <v-card>
+      <v-container>
+      <v-card-title class="headline">Add a New Flight</v-card-title>
+      
+      <v-text-field v-model="flightNumber" label="Flight Number"></v-text-field>
 
+      <v-card-text>
+        </v-card-text> 
+        <v-text-field v-model="flightTrip" label="Flight Trip"></v-text-field>
+        
+        <v-menu v-model="deptDateMenu" absolute top="10" left="0" :close-on-content-click="false" :nudge-right="40" transition="scale-transition">
+              <template v-slot:activator="{ attrs, on }">
+                <v-text-field
+                  v-model="computedDeptTime"
+                  label="Departure Time"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="deptDateMenu = true"
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="deptDate" no-title scrollable>
+                <v-spacer></v-spacer>
+                <v-btn text color="primary" @click="deptDateMenu = false">Cancel</v-btn>
+                <v-btn text color="primary" @click="$refs.deptPicker.save(deptDate)">OK</v-btn>
+              </v-date-picker>
+            </v-menu>
+
+            <v-menu v-model="arrDateMenu" :close-on-content-click="false" absolute :nudge-right="40" transition="scale-transition">
+            <template v-slot:activator="{ attrs, on }">
+              <v-text-field
+                v-model="computedArrTime"
+                label="Arrival Time"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+                @click="arrDateMenu = true"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="arrDate" no-title scrollable>
+              <v-spacer></v-spacer>
+              <v-btn text color="primary" @click="arrDateMenu = false">Cancel</v-btn>
+              <v-btn text color="primary" @click="$refs.arrPicker.save(arrDate)">OK</v-btn>
+            </v-date-picker>
+          </v-menu>
+          <v-select 
+          v-model="departureLocation" 
+          :items="locations" 
+          item-value="id" 
+          item-text="name" 
+          label="Departure Location"
+        ></v-select>
+
+        <v-select 
+          v-model="arrivalLocation" 
+          :items="locations" 
+          item-value="id" 
+          item-text="name" 
+          label="Arrival Location"
+        ></v-select>
+        <v-text-field
+          v-model="requiredFuel"
+          label="Required Fuel (litres)"
+          type="number"  
+          :suffix="litres"
+        ></v-text-field>
+      </v-container>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="closeDialog">Cancel</v-btn>
+          <v-btn color="blue darken-1" text @click="submitFlight">Submit</v-btn>
+          
+
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
     <!-- Gantt Chart -->
     <g-gantt-chart
       :chart-start="chartStart"
@@ -73,6 +150,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { startOfDay, addDays, format } from 'date-fns'
 import axios from 'axios'
+import moment from 'moment'
 
 const currentDate = ref(startOfDay(new Date()))  // Set to current day initially
 
@@ -84,6 +162,38 @@ const chartEnd = computed(() => format(currentDate.value, 'yyyy-MM-dd 19:00'))
 const setToday = () => {
   currentDate.value = startOfDay(new Date())
 }
+const dialogVisible = ref(false);
+const flightName = ref('');
+const destination = ref('');
+const flightTrip = ref('');
+const flightNumber = ref('');
+const requiredFuel = ref(''); 
+
+function openDialog() {
+    dialogVisible.value = true;
+}
+
+function closeDialog() {
+    dialogVisible.value = false;
+}
+
+function submitFlight() {
+    console.log("Flight Name:", flightName.value);
+    console.log("Destination:", destination.value);
+    closeDialog(); 
+}
+
+const deptDateMenu = ref(false);
+const deptDate = ref(null); 
+const computedDeptTime = computed(() => 
+  deptDate.value ? moment(deptDate.value).format('YYYY-MM-DD HH:mm') : ''
+);
+
+const arrDateMenu = ref(false);
+const arrDate = ref(null); 
+const computedArrTime = computed(() => 
+  arrDate.value ? moment(arrDate.value).format('YYYY-MM-DD HH:mm') : ''
+);
 
 function moveDate(days) {
   currentDate.value = addDays(currentDate.value, days)
