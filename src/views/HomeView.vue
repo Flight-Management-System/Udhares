@@ -21,7 +21,7 @@ export default {
   },
   computed: {
       homebackgroundSrc() {
-        return require('src/assets/homebackground.png');
+        return require('@/assets/homebackground.png');
       }
     }
   }

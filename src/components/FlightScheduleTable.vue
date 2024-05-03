@@ -71,6 +71,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
+import { startOfDay, addDays, format } from 'date-fns'
 import axios from 'axios'
 
 const currentDate = ref(startOfDay(new Date()))  // Set to current day initially
