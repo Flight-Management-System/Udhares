@@ -9,11 +9,7 @@
           item-text="full_name"
           item-value="id"
           label="Passenger Passport Number"
-          return-object
-          @input="checkPassenger"
-          :filter="() => true"
-          placeholder="Type to search passport numbers..."
-          clearable
+          required
         ></v-autocomplete>
   
         <v-select
@@ -40,11 +36,27 @@
           required
         ></v-text-field>
   
-        <v-btn color="primary" type="submit">Submit</v-btn>
-        <v-btn color="primary" @click="submitAndAddAnother">Submit and Add Another</v-btn>
-        <v-btn color="error" @click="resetForm">Cancel</v-btn>
+        <v-btn color="blue darken-1 " type="submit">Submit</v-btn>
+        <v-btn color="white" @click="addPassengerDialog = true">Add new Passenger</v-btn>
+        <v-btn color="blue" @click="resetForm">Cancel</v-btn>
       </v-form>
     </v-container>
+    <v-dialog v-model="addPassengerDialog" max-width="500px">
+        <v-card >
+          <v-card-title>Add a New Passenger</v-card-title>
+          <v-card-text>
+              <v-text-field v-model="newPassenger.firstName" label="First Name" required></v-text-field>
+              <v-text-field v-model="newPassenger.lastName" label="Last Name" required></v-text-field>
+              <v-text-field v-model="newPassenger.passportNo" label="Passport Number" required></v-text-field>
+          </v-card-text>
+          <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="blue darken-1" text @click="addPassengerDialog = false">Close</v-btn>
+              <v-btn color="blue darken-1" text @click="saveNewPassenger">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+    </v-dialog>
+
   </template>
   
   <script>
@@ -53,6 +65,11 @@
   export default {
     data() {
       return {
+        addPassengerDialog: false,
+        newPassenger: {
+            firstName: '',
+            lastName: '',
+            passportNo: ''},
         search: null,
         loadingPassengers: false,
         passengers: [],

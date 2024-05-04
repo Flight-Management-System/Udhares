@@ -100,9 +100,9 @@
       </v-container>
       <v-card-actions>
         <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="closeDialog">Cancel</v-btn>
-          <v-btn color="blue darken-1" text @click="submitFlight">Submit</v-btn>
-          
+          <v-btn color="blue darken-1 " text @click="submitFlight">Submit</v-btn>
+          <v-btn color="blue darken-1" text @click="clearForm">clear</v-btn>
+        <v-spacer></v-spacer>
 
       </v-card-actions>
     </v-card>
@@ -175,6 +175,17 @@ function openDialog() {
 
 function closeDialog() {
     dialogVisible.value = false;
+}
+function clearForm() {
+  flightName.value = '';
+  flightTrip.value = '';
+  flightNumber.value = '';
+  requiredFuel.value = '';
+  deptDate.value = null;
+  arrDate.value = null; 
+
+
+  
 }
 
 function submitFlight() {
